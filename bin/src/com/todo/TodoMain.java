@@ -57,7 +57,7 @@ public class TodoMain {
 				break;
 
 			default:
-				System.out.println("please enter one of the above mentioned command");
+				System.out.println("원하는 실행메뉴가 존재하지 않습니다. (도움말 - help)");
 				break;
 			}
 			
