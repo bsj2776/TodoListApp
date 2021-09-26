@@ -10,13 +10,6 @@ public class TodoItem {
     private String category;
     private String due_date;
     
-
-	public TodoItem(String title, String desc){
-        this.title = title;
-        this.desc = desc;
-        SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
-        this.current_date = f.format(new Date());
-    }//나중에 생성자 제거
     
     public TodoItem(String category, String title, String desc, String due_date){
     	//addList 생성자
