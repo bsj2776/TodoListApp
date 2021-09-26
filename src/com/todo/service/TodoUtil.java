@@ -84,38 +84,35 @@ public class TodoUtil {
 		for (TodoItem item : l.getList()) {
 			if(i == l_num) {
 				System.out.println(i + ". " + item);
-				l.deleteItem(item);
-			}
-			i++;
-		}
-		if(l_num > l.getList().size()) {
-			System.out.print("(그 번호는 존재하지 않습니다)");
-			return;
-		}
-		
-		System.out.print("[새 카테고리를 입력하세요] > ");
-		String new_category = sc.nextLine();
-
-		System.out.print("[새 제목을 입력하세요] > ");
-		String new_title = sc.nextLine().trim();
-		if (l.isDuplicate(new_title)) {
-			System.out.println("(이 항목은 이미 목록에 존재합니다.)");
-			return;
-		}
-		
-		System.out.print("[내용을 입력하세요] > ");
-		String new_description = sc.nextLine();
-		
-		System.out.print("[새 마감일자를 입력하세요]");
-		String new_due_date = sc.nextLine();
-		
-		for (i = 1; i <= l.getList().size(); i++) {
-			if (i == l_num) {
 				
+				System.out.print("[새 카테고리를 입력하세요] > ");
+				String new_category = sc.nextLine();
+
+				System.out.print("[새 제목을 입력하세요] > ");
+				String new_title = sc.nextLine().trim();
+				if (l.isDuplicate(new_title)) {
+					System.out.println("(이 항목은 이미 목록에 존재합니다.)");
+					return;
+				}
+				
+				System.out.print("[내용을 입력하세요] > ");
+				String new_description = sc.nextLine();
+				
+				System.out.print("[새 마감일자를 입력하세요]");
+				String new_due_date = sc.nextLine();
+				
+				l.deleteItem(item);
 				TodoItem t = new TodoItem(new_category, new_title, new_description, new_due_date);
 				l.addItem(t);
 			}
+			i++;
 		}
+		
+		if(l_num > l.getList().size()+1) {
+			System.out.print("(그 번호가 리스트크기를 초과하였습니다)");
+			return;
+		}
+		
 		System.out.print("[정상적으로 수정되었습니다]");
 	}
 
