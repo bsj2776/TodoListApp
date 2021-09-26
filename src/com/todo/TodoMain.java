@@ -56,6 +56,12 @@ public class TodoMain {
 				System.out.println("[날짜 순 정렬리스트]");
 				isList = true;
 				break;
+				
+			case "find":
+				String keyword = sc.next();
+				sc.nextLine();
+				TodoUtil.find(l, keyword);
+				break;
 
 			case "exit":
 				quit = true;
@@ -70,7 +76,7 @@ public class TodoMain {
 				break;
 			}
 			
-			if(isList) l.listAll();
+			if(isList) l.listAll(l);
 		} while (!quit);
 		TodoUtil.saveList(l, "todolist.txt");
 	}

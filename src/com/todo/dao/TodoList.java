@@ -35,11 +35,13 @@ public class TodoList {
 
 	}
 
-	public void listAll() {
-		System.out.println("\n"
-				+ "inside list_All method\n");
-		for (TodoItem myitem : list) {
-			System.out.println(myitem.getTitle() + myitem.getDesc());
+	public void listAll(TodoList l) {
+		System.out.println("[전체 목록, " + "총 "+ l.getList().size() + "개]");
+		int num = 1;
+		for (TodoItem item : l.getList()) {
+			System.out.print(num + ". ");
+			System.out.println(item.toString());
+			num++;
 		}
 	}
 	

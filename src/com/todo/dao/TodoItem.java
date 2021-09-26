@@ -7,14 +7,36 @@ public class TodoItem {
     private String title;
     private String desc;
     private String current_date;
+    private String category;
+    private String due_date;
+    
 
-
-    public TodoItem(String title, String desc){
+	public TodoItem(String title, String desc){
         this.title = title;
         this.desc = desc;
         SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
         this.current_date = f.format(new Date());
+    }//唱吝俊 积己磊 力芭
+    
+    public TodoItem(String category, String title, String desc, String due_date){
+    	//addList 积己磊
+    	this.category = category;
+    	this.title = title;
+        this.desc = desc;
+        this.due_date = due_date;
+        SimpleDateFormat c = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
+        this.current_date = c.format(new Date());
     }
+    
+    public TodoItem(String category, String title, String desc, String due_date, String current_date){
+        //loadList 积己磊
+    	this.category = category;
+    	this.title = title;
+        this.desc = desc;
+        this.due_date = due_date;
+        this.current_date = current_date;
+    }
+    
     
     public String getTitle() {
         return title;
@@ -40,13 +62,31 @@ public class TodoItem {
         this.current_date = current_date;
     }
     
-    
-    @Override
+    public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getDue_date() {
+		return due_date;
+	}
+
+	public void setDue_date(String due_date) {
+		this.due_date = due_date;
+	}
+
+	@Override
 	public String toString() {
-		return "[力格] : " + title + " [郴侩] : " + desc + " - " + current_date;
+		return "[" + category + "] " + title + " - " + desc + " - " + due_date + 
+				" - " + current_date;
 	}
 
 	public String toSaveString() {
-    	return title + "##" + desc + "##" + current_date + "\n";
+    	return category+ "##" + title + "##" + desc + "##" + due_date + "##" 
+    			+ current_date + "\n";
     }
+
 }
