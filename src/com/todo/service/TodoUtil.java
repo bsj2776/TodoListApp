@@ -59,7 +59,8 @@ public class TodoUtil {
 					l.deleteItem(item);
 					System.out.print("[정상적으로 삭제되었습니다]");
 					break;
-				}
+				}else
+					return;
 			}
 			i++;
 		}
@@ -78,19 +79,23 @@ public class TodoUtil {
 				+ "[항목 수정]\n"
 				+ "[수정하고 싶은 항목의 번호을 입력하세요] > ");
 		int l_num = sc.nextInt();
+		sc.nextLine();
 		int i = 1;
-		for (TodoItem list : l.getList()) {
+		for (TodoItem item : l.getList()) {
 			if(i == l_num) {
-				System.out.println(list);
-				i++;
+				System.out.println(i + ". " + item);
+				l.deleteItem(item);
 			}
+			i++;
 		}
 		if(l_num > l.getList().size()) {
 			System.out.print("(그 번호는 존재하지 않습니다)");
 			return;
 		}
 		
-		sc.nextLine();
+		System.out.print("[새 카테고리를 입력하세요] > ");
+		String new_category = sc.nextLine();
+
 		System.out.print("[새 제목을 입력하세요] > ");
 		String new_title = sc.nextLine().trim();
 		if (l.isDuplicate(new_title)) {
@@ -98,22 +103,18 @@ public class TodoUtil {
 			return;
 		}
 		
-		System.out.print("[새 카테고리를 입력하세요] > ");
-		String new_category = sc.nextLine();
-		
 		System.out.print("[내용을 입력하세요] > ");
 		String new_description = sc.nextLine();
 		
 		System.out.print("[새 마감일자를 입력하세요]");
 		String new_due_date = sc.nextLine();
 		
-		for (TodoItem item : l.getList()) {
+		for (i = 1; i <= l.getList().size(); i++) {
 			if (i == l_num) {
-				l.deleteItem(item);
+				
 				TodoItem t = new TodoItem(new_category, new_title, new_description, new_due_date);
 				l.addItem(t);
 			}
-			i++;
 		}
 		System.out.print("[정상적으로 수정되었습니다]");
 	}
